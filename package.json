@@ -1,11 +1,21 @@
 {
   "name": "node-red-unstorage",
   "version": "0.1.0",
+  "type": "module",
   "description": "Running Node Red on Unstorage layer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf ./dist && tsc",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon ./src/index.ts"
   },
   "author": "Becem Gharbi",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.1.7",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
 }
