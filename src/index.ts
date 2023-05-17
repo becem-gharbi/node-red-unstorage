@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import { createServer } from "http";
 import nodered from "node-red";

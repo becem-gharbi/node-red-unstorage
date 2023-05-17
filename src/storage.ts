@@ -1,28 +1,37 @@
 //@ts-nocheck
 import type { StorageModule } from "@node-red/runtime";
-import { createStorage } from "unstorage";
+import { createStorage, prefixStorage, Storage } from "unstorage";
 import Flows from "./models/flows.js";
 import Credentials from "./models/credentials.js";
 import Settings from "./models/settings.js";
 import Sessions from "./models/sessions.js";
 import Library from "./models/library.js";
+import fsDriver from "unstorage/drivers/fs";
 
 var appname: string;
 
-export const storage = createStorage();
+export var appStorage: Storage;
 
 export const storageModule: StorageModule = {
-  init: async () => {
+  init: () => {
     appname = "app0";
+
+    const unstorage = createStorage({
+      driver: fsDriver({ base: "./tmp" }),
+    });
+
+    appStorage = prefixStorage(unstorage, appname);
   },
 
-  getFlows: function () {
+  getFlows: function () { //Needed
+    console.log("********* getFlows *********");
+
     return new Promise(function (resolve, reject) {
       Flows.findOne({ appname: appname }, function (err, flows) {
         if (err) {
           reject(err);
         } else {
-          if (flows) {
+          if (flows.flow) {
             resolve(flows.flow);
           } else {
             resolve([]);
@@ -32,7 +41,9 @@ export const storageModule: StorageModule = {
     });
   },
 
-  saveFlows: function (flows) {
+  saveFlows: function (flows) { //Needed
+    console.log("********* saveFlows *********");
+
     return new Promise(function (resolve, reject) {
       Flows.findOneAndUpdate(
         { appname: appname },
@@ -48,13 +59,15 @@ export const storageModule: StorageModule = {
     });
   },
 
-  getCredentials: function () {
+  getCredentials: function () { //Needed
+    console.log("********* getCredentials *********");
+
     return new Promise(function (resolve, reject) {
       Credentials.findOne({ appname: appname }, function (err, credentials) {
         if (err) {
           reject(err);
         } else {
-          if (credentials) {
+          if (credentials.credentials) {
             resolve(JSON.parse(credentials.credentials));
           } else {
             resolve({});
@@ -65,6 +78,8 @@ export const storageModule: StorageModule = {
   },
 
   saveCredentials: function (credentials) {
+    console.log("********* saveCredentials *********");
+
     return new Promise(function (resolve, reject) {
       Credentials.findOneAndUpdate(
         { appname: appname },
@@ -80,13 +95,15 @@ export const storageModule: StorageModule = {
     });
   },
 
-  getSettings: function () {
+  getSettings: function () { //Needed
+    console.log("********* getSettings *********");
+
     return new Promise(function (resolve, reject) {
       Settings.findOne({ appname: appname }, function (err, settings) {
         if (err) {
           reject(err);
         } else {
-          if (settings) {
+          if (settings.settings) {
             resolve(settings.settings);
           } else {
             resolve({});
@@ -96,12 +113,13 @@ export const storageModule: StorageModule = {
     });
   },
 
-  saveSettings: function (settings) {
+  saveSettings: function (settings) { //Needed
+    console.log("********* saveSettings *********");
+
     return new Promise(function (resolve, reject) {
       Settings.findOneAndUpdate(
         { appname: appname },
         { settings: settings },
-        { upsert: true, useFindAndModify: false },
         function (err, settings) {
           if (err) {
             reject(err);
@@ -114,13 +132,14 @@ export const storageModule: StorageModule = {
   },
 
   getSessions: function () {
+    console.log("********* getSessions *********");
+
     return new Promise(function (resolve, reject) {
       Sessions.findOne({ appname: appname }, function (err, sessions) {
         if (err) {
           reject(err);
         } else {
-          if (sessions) {
-            // console.log("found session")
+          if (sessions.sessions) {
             resolve(sessions.sessions);
           } else {
             resolve({});
@@ -131,6 +150,8 @@ export const storageModule: StorageModule = {
   },
 
   saveSessions: function (sessions) {
+    console.log("********* saveSessions *********");
+
     return new Promise(function (resolve, reject) {
       Sessions.findOneAndUpdate(
         { appname: appname },
@@ -147,6 +168,8 @@ export const storageModule: StorageModule = {
   },
 
   getLibraryEntry: function (type, name) {
+    console.log("********* getLibraryEntry *********");
+
     if (name == "") {
       name = "/";
     } else if (name.substr(0, 1) != "/") {
@@ -196,6 +219,8 @@ export const storageModule: StorageModule = {
   },
 
   saveLibraryEntry: function (type, name, meta, body) {
+    console.log("********* saveLibraryEntry *********");
+
     return new Promise(function (resolve, reject) {
       var p = name.split("/"); // strip multiple slash
       p = p.filter(Boolean);
