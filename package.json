@@ -7,7 +7,8 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "start": "node ./dist/index.js",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "release": "changelogen --release && git push --follow-tags"
   },
   "author": "Becem Gharbi",
   "license": "MIT",
