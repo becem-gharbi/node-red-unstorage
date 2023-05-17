@@ -20,7 +20,7 @@ export const settings: LocalSettings = {
   functionGlobalContext: {},
   uiHost: "0.0.0.0",
   uiPort: parseInt(process.env.PORT) || 8080,
-  credentialSecret: "secret",
+  credentialSecret: process.env.CREDENTIAL_SECRET || "secret",
   //@ts-ignore
   storageModule: storageModule,
   storageSettings: {
