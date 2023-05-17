@@ -1,7 +1,6 @@
 //@ts-nocheck
 import type { StorageModule } from "@node-red/runtime";
-import { createStorage, prefixStorage, Storage } from "unstorage";
-import fsDriver from "unstorage/drivers/fs";
+import { prefixStorage, Storage } from "unstorage";
 
 var appname: string;
 
@@ -9,14 +8,10 @@ var appStorage: Storage;
 var libraryStorage: Storage;
 
 export const storageModule: StorageModule = {
-  init: () => {
-    appname = "app0";
+  init: ({ storageSettings }) => {
+    appname = storageSettings.appName;
 
-    const unstorage = createStorage({
-      driver: fsDriver({ base: "./tmp" }),
-    });
-
-    appStorage = prefixStorage(unstorage, appname);
+    appStorage = prefixStorage(storageSettings.storage, appname);
 
     libraryStorage = prefixStorage(appStorage, "library");
   },
