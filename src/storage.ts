@@ -1,10 +1,6 @@
 //@ts-nocheck
 import type { StorageModule } from "@node-red/runtime";
 import { createStorage, prefixStorage, Storage } from "unstorage";
-import Flows from "./models/flows.js";
-import Credentials from "./models/credentials.js";
-import Settings from "./models/settings.js";
-import Sessions from "./models/sessions.js";
 import Library from "./models/library.js";
 import fsDriver from "unstorage/drivers/fs";
 
@@ -23,149 +19,24 @@ export const storageModule: StorageModule = {
     appStorage = prefixStorage(unstorage, appname);
   },
 
-  getFlows: function () { //Needed
-    console.log("********* getFlows *********");
+  getFlows: () => appStorage.getItem("flows").then((flows) => flows || []),
 
-    return new Promise(function (resolve, reject) {
-      Flows.findOne({ appname: appname }, function (err, flows) {
-        if (err) {
-          reject(err);
-        } else {
-          if (flows.flow) {
-            resolve(flows.flow);
-          } else {
-            resolve([]);
-          }
-        }
-      });
-    });
-  },
+  saveFlows: (flows) => appStorage.setItem("flows", flows),
 
-  saveFlows: function (flows) { //Needed
-    console.log("********* saveFlows *********");
+  getCredentials: () =>
+    appStorage.getItem("credentials").then((creds) => creds || {}),
 
-    return new Promise(function (resolve, reject) {
-      Flows.findOneAndUpdate(
-        { appname: appname },
-        { flow: flows },
-        function (err, flows) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        }
-      );
-    });
-  },
+  saveCredentials: () => appStorage.setItem("credentials", credentials),
 
-  getCredentials: function () { //Needed
-    console.log("********* getCredentials *********");
+  getSettings: () =>
+    appStorage.getItem("settings").then((settings) => settings || {}),
 
-    return new Promise(function (resolve, reject) {
-      Credentials.findOne({ appname: appname }, function (err, credentials) {
-        if (err) {
-          reject(err);
-        } else {
-          if (credentials.credentials) {
-            resolve(JSON.parse(credentials.credentials));
-          } else {
-            resolve({});
-          }
-        }
-      });
-    });
-  },
+  saveSettings: () => appStorage.setItem("settings", settings),
 
-  saveCredentials: function (credentials) {
-    console.log("********* saveCredentials *********");
+  getSessions: () =>
+    appStorage.getItem("sessions").then((sessions) => sessions || {}),
 
-    return new Promise(function (resolve, reject) {
-      Credentials.findOneAndUpdate(
-        { appname: appname },
-        { credentials: JSON.stringify(credentials) },
-        function (err, credentials) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        }
-      );
-    });
-  },
-
-  getSettings: function () { //Needed
-    console.log("********* getSettings *********");
-
-    return new Promise(function (resolve, reject) {
-      Settings.findOne({ appname: appname }, function (err, settings) {
-        if (err) {
-          reject(err);
-        } else {
-          if (settings.settings) {
-            resolve(settings.settings);
-          } else {
-            resolve({});
-          }
-        }
-      });
-    });
-  },
-
-  saveSettings: function (settings) { //Needed
-    console.log("********* saveSettings *********");
-
-    return new Promise(function (resolve, reject) {
-      Settings.findOneAndUpdate(
-        { appname: appname },
-        { settings: settings },
-        function (err, settings) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        }
-      );
-    });
-  },
-
-  getSessions: function () {
-    console.log("********* getSessions *********");
-
-    return new Promise(function (resolve, reject) {
-      Sessions.findOne({ appname: appname }, function (err, sessions) {
-        if (err) {
-          reject(err);
-        } else {
-          if (sessions.sessions) {
-            resolve(sessions.sessions);
-          } else {
-            resolve({});
-          }
-        }
-      });
-    });
-  },
-
-  saveSessions: function (sessions) {
-    console.log("********* saveSessions *********");
-
-    return new Promise(function (resolve, reject) {
-      Sessions.findOneAndUpdate(
-        { appname: appname },
-        { sessions: sessions },
-        function (err, sessions) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        }
-      );
-    });
-  },
+  saveSessions: () => appStorage.setItem("sessions", sessions),
 
   getLibraryEntry: function (type, name) {
     console.log("********* getLibraryEntry *********");
