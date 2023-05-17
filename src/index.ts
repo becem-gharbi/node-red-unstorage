@@ -1,10 +1,43 @@
 import * as dotenv from "dotenv";
-dotenv.config();
-
 import express from "express";
 import { createServer } from "http";
 import nodered from "node-red";
-import { settings } from "./settings.js";
+import { LocalSettings } from "@node-red/runtime";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
+import { storageModule } from "./storage.js";
+import { createStorage } from "unstorage";
+import mongodbDriver from "unstorage/drivers/mongodb";
+
+dotenv.config();
+
+const storage = createStorage({
+  //@ts-ignore
+  driver: mongodbDriver({
+    connectionString: process.env.MONGO_DB_URL,
+    databaseName: "nodeRed",
+    collectionName: "unstorage",
+  }),
+});
+
+const cwd = dirname(fileURLToPath(import.meta.url));
+
+const settings: LocalSettings = {
+  httpAdminRoot: "/",
+  httpNodeRoot: "/api",
+  userDir: resolve(cwd, ".."),
+  nodesDir: resolve(cwd, "..", "nodes"),
+  functionGlobalContext: {},
+  uiHost: "0.0.0.0",
+  uiPort: parseInt(process.env.PORT) || 8080,
+  credentialSecret: process.env.CREDENTIAL_SECRET || "secret",
+  //@ts-ignore
+  storageModule: storageModule,
+  storageSettings: {
+    storage: storage,
+    appName: process.env.APP_NAME || "default",
+  },
+};
 
 const app = express();
 

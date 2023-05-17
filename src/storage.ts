@@ -2,16 +2,15 @@
 import type { StorageModule } from "@node-red/runtime";
 import { prefixStorage, Storage } from "unstorage";
 
-var appname: string;
-
 var appStorage: Storage;
 var libraryStorage: Storage;
 
 export const storageModule: StorageModule = {
   init: ({ storageSettings }) => {
-    appname = storageSettings.appName;
-
-    appStorage = prefixStorage(storageSettings.storage, appname);
+    appStorage = prefixStorage(
+      storageSettings.storage,
+      storageSettings.appName
+    );
 
     libraryStorage = prefixStorage(appStorage, "library");
   },
