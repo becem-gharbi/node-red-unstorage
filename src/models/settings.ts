@@ -1,18 +1,17 @@
-// var Settings = new Schema({
-//   appname: String,
-//   settings: Schema.Types.Mixed,
-// });
-import { storage } from "../storage.js";
+interface ISettings {
+  appname: string;
+  settings: any;
+}
 
 export default {
   findOne: (
     whrere: { appname: string },
-    cb: (err: Error, settings: any) => void
+    cb: (err: Error, settings: ISettings) => void
   ) => {},
 
   findOneAndUpdate: (
     where: { appname: string },
     data: { settings: any },
-    cb: (err: Error, settings: any) => {}
+    cb: (err: Error, settings: ISettings) => {}
   ) => {},
 };

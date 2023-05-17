@@ -1,18 +1,17 @@
-// var Flows = new Schema({
-//   appname: String,
-//   flow: Schema.Types.Mixed,
-// });
-import { storage } from "../storage.js";
+interface IFlows {
+  appname: string;
+  flow: any;
+}
 
 export default {
   findOne: (
     where: { appname: string },
-    cb: (err: Error, flows: any) => void
+    cb: (err: Error, flows: IFlows) => void
   ) => {},
 
   findOneAndUpdate: (
     where: { appname: string },
     data: { flow: any },
-    cb: (err: Error, flows: any) => {}
+    cb: (err: Error, flows: IFlows) => {}
   ) => {},
 };

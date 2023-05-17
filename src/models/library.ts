@@ -1,21 +1,20 @@
-// var Library = new Schema({
-//   appname: String,
-//   type: String,
-//   name: String,
-//   meta: Schema.Types.Mixed,
-//   body: Schema.Types.Mixed,
-// });
-import { storage } from "../storage.js";
+interface ILibrary {
+  appname: string;
+  type: string;
+  name: string;
+  meta: any;
+  body: any;
+}
 
 export default {
   findOne: (
     where: { appname: string; type: string; name: string },
-    cb: (err: Error, library: any) => void
+    cb: (err: Error, library: ILibrary) => void
   ) => {},
 
   findOneAndUpdate: (
     where: { appname: string; name: string },
-    data: { name: string; meta: string; body: string; type: string },
-    cb: (err: Error, library: any) => {}
+    data: { name: string; meta: any; body: any; type: string },
+    cb: (err: Error, library: ILibrary) => {}
   ) => {},
 };

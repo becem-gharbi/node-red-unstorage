@@ -1,19 +1,17 @@
-// var Credentials = new Schema({
-//   appname: String,
-//   credentials: String,
-// });
-
-import { storage } from "../storage.js";
+interface ICredentials {
+  appname: string;
+  credentials: string;
+}
 
 export default {
   findOne: (
     where: { appname: string },
-    cb: (err: Error, credentials: any) => void
+    cb: (err: Error, credentials: ICredentials) => void
   ) => {},
 
   findOneAndUpdate: (
     where: { appname: string },
     data: { credentials: any },
-    cb: (err: Error, credentials: any) => {}
+    cb: (err: Error, credentials: ICredentials) => {}
   ) => {},
 };

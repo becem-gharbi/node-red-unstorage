@@ -1,5 +1,5 @@
 //@ts-nocheck
-import type { Storage } from "unstorage";
+import type { StorageModule } from "@node-red/runtime";
 import { createStorage } from "unstorage";
 import Flows from "./models/flows.js";
 import Credentials from "./models/credentials.js";
@@ -11,7 +11,7 @@ var appname: string;
 
 export const storage = createStorage();
 
-export const storageModule = {
+export const storageModule: StorageModule = {
   init: async () => {
     appname = "app0";
   },
