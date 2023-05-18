@@ -1,4 +1,4 @@
-# 💾 Node Red Unstorage
+# Node Red Unstorage
 
 Node-RED is a programming tool for wiring together hardware devices, APIs and online services via a browser-based editor.
 
@@ -45,10 +45,3 @@ Run the production build:
 npm run start
 ```
 
-## Caveats
-
-Node RED has a large [library](https://flows.nodered.org/) of ready to use Nodes. In order to add an external Node to the palette, the installation should happend over CLI.
-
-## Credits
-
-- [@hardillb](https://github.com/hardillb) - [node-red-contrib-storage-mongodb](https://github.com/hardillb/node-red-contrib-storage-mongodb)
