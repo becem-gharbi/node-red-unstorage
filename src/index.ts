@@ -50,6 +50,8 @@ const app = express();
 
 const server = createServer(app);
 
+app.use("/", express.static("public"));
+
 nodered.init(server, settings);
 
 app.use(settings.httpAdminRoot as string, nodered.httpAdmin);
