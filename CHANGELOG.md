@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.1.2
+
+[compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.1...v0.1.2)
+
+
+### 🚀 Enhancements
+
+  - Create docker image ([946c701](https://github.com/becem-gharbi/node-red-unstorage/commit/946c701))
+
+### 🩹 Fixes
+
+  - Add static content middleware ([28e1593](https://github.com/becem-gharbi/node-red-unstorage/commit/28e1593))
+
+### 📖 Documentation
+
+  - Update README ([f8f3dcf](https://github.com/becem-gharbi/node-red-unstorage/commit/f8f3dcf))
+
+### 🏡 Chore
+
+  - Set loggin console to trace ([e3feb6c](https://github.com/becem-gharbi/node-red-unstorage/commit/e3feb6c))
+  - Set logging console to default ([f8a35aa](https://github.com/becem-gharbi/node-red-unstorage/commit/f8a35aa))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v0.1.1
 
 
