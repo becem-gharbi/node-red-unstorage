@@ -37,13 +37,6 @@ const settings: LocalSettings = {
     storage: storage,
     appName: process.env.APP_NAME || "default",
   },
-  logging: {
-    console: {
-      level: "trace",
-      audit: false,
-      metrics: false,
-    },
-  },
 };
 
 const app = express();
