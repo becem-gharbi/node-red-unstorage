@@ -8,7 +8,7 @@
 
 ### 🚀 Enhancements
 
-  - Create docker image ([946c701](https://github.com/becem-gharbi/node-red-unstorage/commit/946c701))
+  - Add docker configuration ([946c701](https://github.com/becem-gharbi/node-red-unstorage/commit/946c701))
 
 ### 🩹 Fixes
 
