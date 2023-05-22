@@ -45,3 +45,5 @@ Run the production build:
 npm run start
 ```
 
+## Credits
+- [@hardillb](https://github.com/hardillb) - node-red-contrib-storage-mongodb
