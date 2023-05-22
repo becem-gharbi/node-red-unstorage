@@ -1,12 +1,8 @@
 # Node Red Unstorage
 
-Node-RED is a programming tool for wiring together hardware devices, APIs and online services via a browser-based editor.
+Node-RED is a programming tool for wiring together hardware devices, APIs and online services via a browser-based editor. By default the data is stored on local file-system. However, Node RED provides a storage API allowing custom integrations.
 
-This project aims to embed and run a Node Red instance on a NodeJS application suitable for serverless deployment.
-
-By default the data is stored on filesystem. However, Node RED exposes a storage interface enabling custom integrations.
-
-This project implements a storage plugin based on [unstorage](https://unstorage.unjs.io/) library. Thus allowing a flexible storage layer that can run on filesystem, Mongo DB and a variety of key-value storage platforms.
+This project aims to embed and run a Node Red instance on a Node.js application suitable for stateless deployment. This is done by implementing a storage plugin based on [unstorage](https://unstorage.unjs.io/) library. Thus allowing a flexible storage layer that can run on file-system, Mongo DB and a variety of key-value storage platforms.
 
 ## Setup
 
