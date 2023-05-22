@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v0.1.3
+
+[compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.2...v0.1.3)
+
+
+### 🩹 Fixes
+
+  - **storage:** Fix getLibraryEntry & saveLibraryEntry file handling ([b169400](https://github.com/becem-gharbi/node-red-unstorage/commit/b169400))
+
+### 💅 Refactors
+
+  - Add auth via credentials ([a766797](https://github.com/becem-gharbi/node-red-unstorage/commit/a766797))
+  - **storage:** Simplify ([c6ad362](https://github.com/becem-gharbi/node-red-unstorage/commit/c6ad362))
+
+### 📖 Documentation
+
+  - Update readme ([be213c7](https://github.com/becem-gharbi/node-red-unstorage/commit/be213c7))
+  - **readme:** Add credits section ([5fb36cd](https://github.com/becem-gharbi/node-red-unstorage/commit/5fb36cd))
+
+### 🏡 Chore
+
+  - Update changelog ([37ea86d](https://github.com/becem-gharbi/node-red-unstorage/commit/37ea86d))
+  - Fix dependabot related alerts ([e9fb18a](https://github.com/becem-gharbi/node-red-unstorage/commit/e9fb18a))
+  - Disable auto restart on dev ([3439c6b](https://github.com/becem-gharbi/node-red-unstorage/commit/3439c6b))
+  - Set read-only flag on nodered container ([c1161fc](https://github.com/becem-gharbi/node-red-unstorage/commit/c1161fc))
+  - Add default password comment ([e6b167f](https://github.com/becem-gharbi/node-red-unstorage/commit/e6b167f))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v0.1.2
 
 [compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.1...v0.1.2)
