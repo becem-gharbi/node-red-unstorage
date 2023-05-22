@@ -38,7 +38,7 @@ export const storageModule: StorageModule = {
   getLibraryEntry: async function (type, name) {
     if (name == "") {
       name = "/";
-    } else if (name.substr(0, 1) != "/") {
+    } else if (!name.startsWith("/")) {
       name = "/" + name;
     }
 
@@ -84,7 +84,7 @@ export const storageModule: StorageModule = {
     var p = name.split("/"); // strip multiple slash
     p = p.filter(Boolean);
     name = p.slice(0, p.length).join("/");
-    if (name != "" && name.substr(0, 1) != "/") {
+    if (name != "" && !name.startsWith("/")) {
       name = "/" + name;
     }
 
