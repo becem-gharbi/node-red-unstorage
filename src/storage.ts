@@ -42,15 +42,20 @@ export const storageModule: StorageModule = {
       name = "/" + name;
     }
 
-    const library = await libraryStorage.getItem(name);
+    const library = await libraryStorage.getItem(name + ":" + type);
 
     if (library) {
-      const parsedLibrary = JSON.parse(library);
-
-      return parsedLibrary.body;
+      const body = JSON.parse(library.body);
+      return body;
     }
 
-    const libraryKeys = await libraryStorage.getKeys(name);
+    let libraryKeys = await libraryStorage.getKeys(name);
+
+    if (!libraryKeys) {
+      return [];
+    }
+
+    libraryKeys = libraryKeys.filter((el) => el.endsWith(type));
 
     var dirs = [];
     var files = [];
@@ -58,12 +63,10 @@ export const storageModule: StorageModule = {
     for (var i = 0; i < libraryKeys.length; i++) {
       const library = await libraryStorage.getItem(libraryKeys[i]);
 
-      const parsedLibrary = JSON.parse(library);
-
-      var n = parsedLibrary.name;
+      var n = library.name;
       n = n.replace(name, "");
       if (n.indexOf("/") == -1) {
-        var f = parsedLibrary.meta;
+        var f = library.meta;
         f.fn = n;
         files.push(f);
       } else {
@@ -85,6 +88,11 @@ export const storageModule: StorageModule = {
       name = "/" + name;
     }
 
-    return libraryStorage.setItem(name, { name, meta, body, type });
+    return libraryStorage.setItem(name + ":" + type, {
+      name,
+      meta,
+      body,
+      type,
+    });
   },
 };

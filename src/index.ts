@@ -48,6 +48,11 @@ const settings: LocalSettings = {
       },
     ],
   },
+  contextStorage: {
+    default: {
+      module: "localfilesystem",
+    },
+  },
 };
 
 const app = express();
