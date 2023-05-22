@@ -37,6 +37,17 @@ const settings: LocalSettings = {
     storage: storage,
     appName: process.env.APP_NAME || "default",
   },
+  adminAuth: {
+    type: "credentials",
+    users: [
+      {
+        username: "admin",
+        password:
+          "$2b$08$1DooD4I2bJVYmxEVF69L2e55N8KkO/dn3QMFwvCtt.tgrD9X7cB/m",
+        permissions: "*",
+      },
+    ],
+  },
 };
 
 const app = express();
