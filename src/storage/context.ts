@@ -1,9 +1,17 @@
-import { prefixStorage, Storage } from "unstorage";
+import { prefixStorage, Storage, createStorage } from "unstorage";
+import type { CreateStorageOptions } from "unstorage";
 
 var appStorage: Storage;
 
-var ContextStore = function (storageSettings) {
-  appStorage = prefixStorage(storageSettings.storage, storageSettings.appName);
+var ContextStore = function (args: {
+  app: string;
+  options: CreateStorageOptions;
+}) {
+  let appStorage: Storage;
+
+  const storage = createStorage(args.options);
+
+  appStorage = prefixStorage(storage, args.app);
 };
 
 ContextStore.prototype.open = () => {};
@@ -49,6 +57,6 @@ ContextStore.prototype.delete = (scope: string) =>
 
 ContextStore.prototype.clean = (activeNodes) => {};
 
-export function contextModule(config) {
-  return new ContextStore(config);
-}
+export default (args: { app: string; options: CreateStorageOptions }) => {
+  return new ContextStore(args);
+};

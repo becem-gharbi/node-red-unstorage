@@ -5,20 +5,31 @@ import nodered from "node-red";
 import { LocalSettings } from "@node-red/runtime";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
-import { storageModule } from "./storage.js";
-import { createStorage } from "unstorage";
 import mongodbDriver from "unstorage/drivers/mongodb";
-import { contextModule } from "./context.js";
+import storage from "./storage/index.js";
 
 dotenv.config();
 
-const storage = createStorage({
-  //@ts-ignore
-  driver: mongodbDriver({
-    connectionString: process.env.MONGO_DB_URL,
-    databaseName: "nodeRed",
-    collectionName: "unstorage",
-  }),
+const { contextStore, storageModule } = storage({
+  app: "app0",
+
+  storageOptions: {
+    //@ts-ignore
+    driver: mongodbDriver({
+      connectionString: process.env.MONGO_DB_URL,
+      databaseName: "nodeRed",
+      collectionName: "storage",
+    }),
+  },
+
+  contextOptions: {
+    //@ts-ignore
+    driver: mongodbDriver({
+      connectionString: process.env.MONGO_DB_URL,
+      databaseName: "nodeRed",
+      collectionName: "context",
+    }),
+  },
 });
 
 const cwd = dirname(fileURLToPath(import.meta.url));
@@ -36,9 +47,11 @@ const settings: LocalSettings = {
   //@ts-ignore
   storageModule: storageModule,
 
-  storageSettings: {
-    storage: storage,
-    appName: process.env.APP_NAME || "default",
+  contextStorage: {
+    unstorage: {
+      //@ts-ignore
+      module: contextStore,
+    },
   },
 
   adminAuth: {
@@ -53,17 +66,6 @@ const settings: LocalSettings = {
         permissions: "*",
       },
     ],
-  },
-
-  contextStorage: {
-    unstorage: {
-      //@ts-ignore
-      module: contextModule,
-      config: {
-        storage: storage,
-        appName: process.env.APP_NAME || "default",
-      },
-    },
   },
 };
 
