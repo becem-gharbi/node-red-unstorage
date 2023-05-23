@@ -6,10 +6,11 @@ import { LocalSettings } from "@node-red/runtime";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import mongodbDriver from "unstorage/drivers/mongodb";
-import storage from "./storage/index.js";
+import storage from "node-red-unstorage";
 
 dotenv.config();
 
+//@ts-ignore
 const { contextStore, storageModule } = storage({
   app: "app0",
 

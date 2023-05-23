@@ -2,15 +2,21 @@
   "name": "node-red-unstorage",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --outDir dist/esm",
-    "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+    "build": "rimraf dist && tsup src/**/*.ts --format cjs,esm --dts"
   },
   "keywords": [
     "node-red",
@@ -21,6 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "rimraf": "^5.0.1",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

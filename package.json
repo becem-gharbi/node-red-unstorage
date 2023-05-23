@@ -1,5 +1,5 @@
 {
-  "name": "node-red-unstorage",
+  "name": "node-red-unstorage-test",
   "version": "0.1.4",
   "type": "module",
   "description": "Running Node Red on Unstorage layer",
@@ -26,6 +26,7 @@
     "express": "^4.18.2",
     "mongodb": "^5.5.0",
     "node-red": "^3.0.2",
+    "node-red-unstorage": "file:package",
     "unstorage": "^1.6.0"
   },
   "overrides": {
