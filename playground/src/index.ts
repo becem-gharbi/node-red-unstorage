@@ -6,7 +6,7 @@ import { LocalSettings } from "@node-red/runtime";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import mongodbDriver from "unstorage/drivers/mongodb";
-import storage from "node-red-unstorage";
+import storage from "@bg-dev/node-red-unstorage";
 
 dotenv.config();
 
