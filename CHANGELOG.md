@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.1.4
+
+[compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.3...v0.1.4)
+
+
+### 🚀 Enhancements
+
+  - Add context store plugin ([29db63f](https://github.com/becem-gharbi/node-red-unstorage/commit/29db63f))
+
+### 💅 Refactors
+
+  - Create a unified storage plugin (context + module) ([a9b9e1b](https://github.com/becem-gharbi/node-red-unstorage/commit/a9b9e1b))
+  - **context:** Move appStorage to the function scope ([30bf6f9](https://github.com/becem-gharbi/node-red-unstorage/commit/30bf6f9))
+  - Set context as optional ([e04fdba](https://github.com/becem-gharbi/node-red-unstorage/commit/e04fdba))
+
+### 📖 Documentation
+
+  - Update README.md ([1b55ed8](https://github.com/becem-gharbi/node-red-unstorage/commit/1b55ed8))
+
+### 🏡 Chore
+
+  - Generate declaration files on build ([99ae71a](https://github.com/becem-gharbi/node-red-unstorage/commit/99ae71a))
+
+### ❤️  Contributors
+
+- Becem-gharbi 
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.1.3
 
 [compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.2...v0.1.3)
