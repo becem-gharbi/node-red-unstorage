@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { prefixStorage, Storage, createStorage } from "unstorage";
-import type { CreateStorageOptions } from "unstorage";
+import { prefixStorage, createStorage } from "unstorage";
+import type { CreateStorageOptions, Storage } from "unstorage";
 
 var appStorage: Storage;
 var libraryStorage: Storage;
