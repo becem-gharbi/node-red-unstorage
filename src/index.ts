@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import { storageModule } from "./storage.js";
 import { createStorage } from "unstorage";
 import mongodbDriver from "unstorage/drivers/mongodb";
+import { contextModule } from "./context.js";
 
 dotenv.config();
 
@@ -31,12 +32,15 @@ const settings: LocalSettings = {
   uiHost: "0.0.0.0",
   uiPort: parseInt(process.env.PORT) || 8080,
   credentialSecret: process.env.CREDENTIAL_SECRET || "secret",
+
   //@ts-ignore
   storageModule: storageModule,
+
   storageSettings: {
     storage: storage,
     appName: process.env.APP_NAME || "default",
   },
+
   adminAuth: {
     type: "credentials",
     users: [
@@ -49,6 +53,17 @@ const settings: LocalSettings = {
         permissions: "*",
       },
     ],
+  },
+
+  contextStorage: {
+    unstorage: {
+      //@ts-ignore
+      module: contextModule,
+      config: {
+        storage: storage,
+        appName: process.env.APP_NAME || "default",
+      },
+    },
   },
 };
 
