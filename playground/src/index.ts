@@ -12,7 +12,7 @@ dotenv.config();
 
 //@ts-ignore
 const { contextStore, storageModule } = storage({
-  app: "app0",
+  app: process.env.APP_NAME || "default",
 
   storageOptions: {
     //@ts-ignore
