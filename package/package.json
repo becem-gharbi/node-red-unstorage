@@ -1,0 +1,29 @@
+{
+  "name": "node-red-unstorage",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --outDir dist/esm",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+  },
+  "keywords": [
+    "node-red",
+    "storage",
+    "unstorage"
+  ],
+  "author": "Becem Gharbi",
+  "license": "MIT",
+  "devDependencies": {
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "unstorage": "^1.6.0"
+  }
+}
