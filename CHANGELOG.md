@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.1.5
+
+[compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.4...v0.1.5)
+
+
+### 🚀 Enhancements
+
+  - Transform storage plugin to seperate NPM package ([0205fb5](https://github.com/becem-gharbi/node-red-unstorage/commit/0205fb5))
+
+### 📦 Build
+
+  - Use `tsup` for bundling ([c46950d](https://github.com/becem-gharbi/node-red-unstorage/commit/c46950d))
+
+### 🏡 Chore
+
+  - **package:** Add changelogen and release script ([4278640](https://github.com/becem-gharbi/node-red-unstorage/commit/4278640))
+  - **package:** Add .gitignore ([a6c300c](https://github.com/becem-gharbi/node-red-unstorage/commit/a6c300c))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v0.1.4
 
 [compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.3...v0.1.4)
