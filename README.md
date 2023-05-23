@@ -1,5 +1,9 @@
 # Node Red Unstorage
 
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+
 Node-RED is a programming tool for wiring together hardware devices, APIs and online services via a browser-based editor.
 
 Unstorage is a universal key-value storage library. It supports multiple storage platform: filesystem, database, localStorage and [more](https://unstorage.unjs.io/).
@@ -16,7 +20,7 @@ npm i @bg-dev/node-red-unstorage
 
 ## Usage
 
-Below, a Node-Red instance is embedded in a node.js application. Mongo DB is is used for storage layer.
+Below, a Node-Red instance is embedded in a node.js application. Mongo DB is used for storage layer.
 
 ```js
 // Supports ESM and CJS
@@ -35,7 +39,7 @@ dotenv.config();
 const { contextStore, storageModule } = storage({
   // A namespace for the storage layer
   // Allows creating multiple projects with isolated data access
-  app: "app0",
+  app: process.env.APP_NAME || "default",
 
   // Unstorage instance options, for storageModule (required)
   storageOptions: {
@@ -67,6 +71,7 @@ const settings = {
   nodesDir: resolve(cwd, "nodes"),
   uiHost: "0.0.0.0",
   uiPort: parseInt(process.env.PORT) || 8080,
+  credentialSecret: process.env.CREDENTIAL_SECRET || "secret",
 
   storageModule: storageModule,
 
@@ -98,3 +103,16 @@ nodered.start();
 ## Credits
 
 - [@hardillb](https://github.com/hardillb) - node-red-contrib-storage-mongodb
+
+## License
+
+[MIT License](./LICENSE)
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@bg-dev/node-red-unstorage/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/@bg-dev/node-red-unstorage
+[npm-downloads-src]: https://img.shields.io/npm/dt/@bg-dev/node-red-unstorage.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/@bg-dev/node-red-unstorage
+[license-src]: https://img.shields.io/npm/l/@bg-dev/node-red-unstorage.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://npmjs.com/package/@bg-dev/node-red-unstorage
