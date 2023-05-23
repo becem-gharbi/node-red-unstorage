@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsup src/**/*.ts --format cjs,esm --dts"
+    "build": "rimraf dist && tsup src/**/*.ts --format cjs,esm --dts",
+    "release": "npm run build && changelogen --release && npm publish && git push --follow-tags"
   },
   "keywords": [
     "node-red",
@@ -26,6 +27,7 @@
   "author": "Becem Gharbi",
   "license": "MIT",
   "devDependencies": {
+    "changelogen": "^0.5.3",
     "rimraf": "^5.0.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4"
