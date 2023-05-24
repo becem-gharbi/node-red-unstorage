@@ -68,6 +68,14 @@ const settings: LocalSettings = {
       },
     ],
   },
+
+  // logging: {
+  //   console: {
+  //     level: "trace",
+  //     audit: false,
+  //     metrics: false,
+  //   },
+  // },
 };
 
 const app = express();

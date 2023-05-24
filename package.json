@@ -16,6 +16,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "cd playground && npm run dev",
     "build": "rimraf dist && tsup src/**/*.ts --format cjs,esm --dts",
     "release": "npm run build && changelogen --release && npm publish && git push --follow-tags"
   },
