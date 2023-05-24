@@ -68,14 +68,6 @@ const settings: LocalSettings = {
       },
     ],
   },
-
-  // logging: {
-  //   console: {
-  //     level: "trace",
-  //     audit: false,
-  //     metrics: false,
-  //   },
-  // },
 };
 
 const app = express();
@@ -90,6 +82,8 @@ app.use(settings.httpAdminRoot as string, nodered.httpAdmin);
 
 app.use(settings.httpNodeRoot as string, nodered.httpNode);
 
-server.listen(settings.uiPort);
+server.listen(settings.uiPort, () =>
+  console.log(`start listening on port ${settings.uiPort}`)
+);
 
 nodered.start();
