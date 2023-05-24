@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.1.7
+
+[compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.6...v0.1.7)
+
+
+### 🩹 Fixes
+
+  - **context:** Add callbacks for async operations ([f9e0ba6](https://github.com/becem-gharbi/node-red-unstorage/commit/f9e0ba6))
+
+### 🏡 Chore
+
+  - **playground:** Set app name from env ([2f41a8b](https://github.com/becem-gharbi/node-red-unstorage/commit/2f41a8b))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v0.1.6
 
 [compare changes](https://github.com/becem-gharbi/node-red-unstorage/compare/v0.1.5...v0.1.6)
