@@ -8,7 +8,7 @@ Node-RED is a programming tool for wiring together hardware devices, APIs and on
 
 Unstorage is a universal key-value storage library. It supports multiple storage platform: filesystem, database, localStorage and [more](https://unstorage.unjs.io/).
 
-This package is a Node-RED storage plugin that enables the integration with `unstorage`. It implements a `storageModule` for storing flows, settings, sessions and library content. Plus a `contextStorage` for storing context data. Ultimately, the goal is to create a platform agnostic storage layer for Node RED.
+This package is a Node-RED storage plugin that enables the integration with `unstorage`. It implements a `storageModule` for storing flows, settings, sessions and library content. Plus a `contextStorage` for storing context data. The goal is to create a platform agnostic storage layer for Node RED.
 
 ## Setup
 
