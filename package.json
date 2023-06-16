@@ -30,7 +30,7 @@
   "devDependencies": {
     "changelogen": "^0.5.3",
     "rimraf": "^5.0.1",
-    "tsup": "^6.7.0",
+    "tsup": "^7.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
