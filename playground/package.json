@@ -24,7 +24,7 @@
     "@bg-dev/node-red-unstorage": "^0.1.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongodb": "^5.5.0",
+    "mongodb": "^5.8.0",
     "node-red": "^3.0.2",
     "node-red-dashboard": "~3.5.0",
     "unstorage": "^1.6.0"
